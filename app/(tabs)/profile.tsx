@@ -116,47 +116,44 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: 'transparent', // ✅ show global gradient
   },
   header: {
     padding: 20,
     paddingTop: 60,
-    backgroundColor: '#FFFFFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
+    backgroundColor: 'transparent', // ✅ no solid bar
+    borderBottomWidth: 0,
   },
   headerTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: '800',
     color: '#111827',
+    letterSpacing: -0.5,
   },
   userInfo: {
-    backgroundColor: '#FFFFFF',
-    padding: 20,
+    backgroundColor: '#FFFFFF', // ✅ floating card
+    padding: 24,
     alignItems: 'center',
     marginTop: 20,
     marginHorizontal: 16,
-    borderRadius: 12,
+    borderRadius: 16,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: '#EBF4FF',
+    width: 84,
+    height: 84,
+    borderRadius: 42,
+    backgroundColor: '#FFF1E0', // ✅ peach tint
     alignItems: 'center',
     justifyContent: 'center',
   },
   userName: {
     fontSize: 20,
-    fontWeight: '600',
+    fontWeight: '700',
     color: '#111827',
     marginTop: 12,
   },
@@ -168,16 +165,13 @@ const styles = StyleSheet.create({
   section: {
     margin: 16,
     backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: 16,
+    padding: 20,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   sectionTitle: {
     fontSize: 16,
@@ -189,9 +183,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 12,
-    backgroundColor: '#F9FAFB',
-    borderRadius: 8,
+    padding: 14,
+    backgroundColor: '#FFF8F1', // ✅ soft warm background
+    borderRadius: 12,
   },
   whatsappStatus: {
     flexDirection: 'row',
@@ -204,17 +198,17 @@ const styles = StyleSheet.create({
     color: '#111827',
   },
   whatsappButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 8,
   },
   connectButton: {
-    backgroundColor: '#25D366',
+    backgroundColor: '#25D366', // ✅ keep WhatsApp green
   },
   disconnectButton: {
-    backgroundColor: '#FEE2E2',
+    backgroundColor: '#FFF1F0',
     borderWidth: 1,
-    borderColor: '#EF4444',
+    borderColor: '#FF7A45', // ✅ Alan orange instead of red
   },
   buttonText: {
     fontSize: 12,
@@ -224,20 +218,17 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   disconnectText: {
-    color: '#EF4444',
+    color: '#FF7A45', // ✅ warm orange
   },
   menuSection: {
     margin: 16,
     backgroundColor: '#FFFFFF',
-    borderRadius: 12,
+    borderRadius: 16,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   menuItem: {
     flexDirection: 'row',

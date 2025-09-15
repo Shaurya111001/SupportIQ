@@ -118,11 +118,11 @@ export default function ConnectWhatsAppScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: 'transparent', // ✅ let gradient shine
   },
   content: {
     flex: 1,
-    padding: 20,
+    padding: 24,
     justifyContent: 'center',
   },
   header: {
@@ -133,38 +133,42 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: '#F0FDF4',
+    backgroundColor: '#E8FFF1', // ✅ softer green tint
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 24,
+    marginBottom: 28,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   title: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: '800',
     color: '#111827',
     marginBottom: 12,
     textAlign: 'center',
+    letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 16,
     color: '#6B7280',
     textAlign: 'center',
     lineHeight: 24,
+    marginHorizontal: 12,
   },
   features: {
     backgroundColor: '#FFFFFF',
     padding: 20,
-    borderRadius: 12,
+    borderRadius: 16,
     marginBottom: 32,
     gap: 16,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   feature: {
     flexDirection: 'row',
@@ -177,17 +181,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   actions: {
-    gap: 12,
-    marginBottom: 24,
+    gap: 14,
+    marginBottom: 28,
   },
   connectButton: {
-    backgroundColor: '#25D366',
+    backgroundColor: '#25D366', // ✅ WhatsApp brand green
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
     borderRadius: 12,
     gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 4,
+    elevation: 2,
   },
   buttonDisabled: {
     backgroundColor: '#9CA3AF',
@@ -195,7 +204,7 @@ const styles = StyleSheet.create({
   connectButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   skipButton: {
     alignItems: 'center',
@@ -207,14 +216,14 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   info: {
-    backgroundColor: '#EBF4FF',
+    backgroundColor: '#FFF1E0', // ✅ Alan peach instead of blue
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 12,
     alignItems: 'center',
   },
   infoText: {
     fontSize: 12,
-    color: '#3B82F6',
+    color: '#A24A17', // ✅ warm amber text
     textAlign: 'center',
     lineHeight: 18,
   },

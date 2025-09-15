@@ -160,10 +160,11 @@ export default function AnalyticsScreen() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: 'transparent', // ✅ let global gradient show
   },
   scrollContainer: {
     paddingBottom: 20,
@@ -171,14 +172,14 @@ const styles = StyleSheet.create({
   header: {
     padding: 20,
     paddingTop: 60,
-    backgroundColor: '#FFFFFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
+    backgroundColor: 'transparent', // ✅ remove solid block
+    borderBottomWidth: 0,           // ✅ no harsh border
   },
   headerTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: '800',
     color: '#111827',
+    letterSpacing: -0.5,
   },
   headerSubtitle: {
     fontSize: 14,
@@ -192,31 +193,28 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   metricCard: {
-    backgroundColor: '#FFFFFF',
-    padding: 16,
-    borderRadius: 12,
+    backgroundColor: '#FFFFFF', // ✅ floating white card
+    padding: 20,
+    borderRadius: 16,
     width: '48%',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   primaryCard: {
-    backgroundColor: '#EBF4FF',
+    backgroundColor: '#FFF1E0', // ✅ warm peach highlight
   },
   metricValue: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#111827',
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#FF7A45', // ✅ Alan warm orange accent
     marginTop: 8,
   },
   metricLabel: {
-    fontSize: 12,
+    fontSize: 13,
     color: '#6B7280',
     textAlign: 'center',
     marginTop: 4,
@@ -224,20 +222,17 @@ const styles = StyleSheet.create({
   section: {
     margin: 16,
     backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: 16,
+    padding: 20,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '700',
     color: '#111827',
     marginBottom: 16,
   },
@@ -253,7 +248,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#FF7A45', // ✅ warm accent instead of blue
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -279,13 +274,13 @@ const styles = StyleSheet.create({
   intentProgress: {
     width: 60,
     height: 4,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#FFE1C5', // ✅ peach track
     borderRadius: 2,
     overflow: 'hidden',
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#FF7A45', // ✅ orange fill
   },
   statusCard: {
     gap: 12,

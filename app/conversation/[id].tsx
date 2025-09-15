@@ -36,6 +36,12 @@ export default function ConversationDetailScreen() {
 
   useEffect(() => {
     fetchConversationData();
+
+    const interval = setInterval(() => {
+      fetchConversationData();
+    }, 5000); // every 5s while viewing this conversation
+
+    return () => clearInterval(interval); // stop when leaving screen
   }, [id]);
 
   const fetchConversationData = async () => {
@@ -137,29 +143,28 @@ export default function ConversationDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: 'transparent', // ✅ gradient shows
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
     paddingTop: 60,
-    backgroundColor: '#FFFFFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
+    backgroundColor: 'transparent', // ✅ no white block
+    borderBottomWidth: 0,
     gap: 12,
   },
   backButton: {
     padding: 8,
-    borderRadius: 8,
-    backgroundColor: '#F3F4F6',
+    borderRadius: 12,
+    backgroundColor: '#FFF1E0', // ✅ peach tint
   },
   headerInfo: {
     flex: 1,
   },
   headerTitle: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '700',
     color: '#111827',
   },
   headerSubtitle: {
@@ -168,17 +173,22 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   aiSummaryCard: {
-    backgroundColor: '#EBF4FF',
+    backgroundColor: '#FFF8F1', // ✅ warm neutral background
     margin: 16,
     padding: 16,
-    borderRadius: 12,
+    borderRadius: 16,
     borderLeftWidth: 4,
-    borderLeftColor: '#3B82F6',
+    borderLeftColor: '#FF7A45', // ✅ Alan orange accent
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
   },
   aiSummaryTitle: {
     fontSize: 14,
-    fontWeight: '600',
-    color: '#3B82F6',
+    fontWeight: '700',
+    color: '#FF7A45', // ✅ warm orange
     marginBottom: 8,
   },
   aiSummaryText: {
@@ -188,16 +198,16 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   intentTag: {
-    backgroundColor: '#DBEAFE',
-    paddingHorizontal: 8,
+    backgroundColor: '#FFF1E0', // ✅ peach pill
+    paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 12,
+    borderRadius: 999,
     alignSelf: 'flex-start',
   },
   intentText: {
-    fontSize: 11,
-    color: '#3B82F6',
-    fontWeight: '500',
+    fontSize: 12,
+    color: '#A24A17', // ✅ amber/orange text
+    fontWeight: '600',
     textTransform: 'capitalize',
   },
   messagesList: {
@@ -205,37 +215,34 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   messageContainer: {
-    padding: 12,
-    borderRadius: 12,
-    maxWidth: '85%',
+    padding: 14,
+    borderRadius: 16,
+    maxWidth: '80%',
   },
   customerMessage: {
     backgroundColor: '#FFFFFF',
     alignSelf: 'flex-start',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   businessMessage: {
-    backgroundColor: '#EBF4FF',
+    backgroundColor: '#FFEDD5', // ✅ warm peach bubble
     alignSelf: 'flex-end',
   },
   messageHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 6,
     gap: 6,
   },
   senderIcon: {
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#FFF1E0', // ✅ peach icon
     alignItems: 'center',
     justifyContent: 'center',
   },

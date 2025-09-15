@@ -1,32 +1,54 @@
 const crypto = require('crypto');
 
-// Mock AI service - replace with actual OpenAI/Mistral integration
+
+
+const OpenAI = require('openai');
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+
+
+
 async function processWithAI(messages, latestMessage) {
   try {
-    // Mask sensitive data before processing
+    // Mask sensitive data first
     const maskedMessages = messages.map(msg => ({
-      ...msg,
-      content: maskSensitiveData(msg.content)
+      role: msg.sender_type === 'customer' ? 'user' : 'assistant',
+      content: maskSensitiveData(msg.content),
     }));
 
-    // Mock AI processing (replace with actual API calls)
-    const summary = generateMockSummary(maskedMessages);
-    const intent = classifyMockIntent(latestMessage);
+    // Send to OpenAI
+    const response = await client.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "system", content: "You are an AI assistant for customer support. Summarize the conversation and classify the customer's intent." },
+        ...maskedMessages,
+        { role: "user", content: `Please provide:\n1. A one-line summary of this conversation\n2. The customer’s intent category (like support, billing, product_inquiry, order_status, account, general).\nLatest message: "${maskSensitiveData(latestMessage)}"` }
+      ],
+      max_tokens: 200,
+    });
+
+    const aiText = response.choices[0].message.content.trim();
+
+    // Parse summary + intent
+    const lines = aiText.split("\n").map(l => l.trim()).filter(Boolean);
+    const summary = lines[0] || "No summary available";
+    const intent = lines[1] || "unknown";
 
     return {
       summary,
       intent,
-      confidence: 0.85
+      confidence: 0.9,
     };
   } catch (error) {
-    console.error('AI processing error:', error);
+    console.error("AI processing error:", error);
     return {
-      summary: 'Unable to generate summary',
-      intent: 'unknown',
-      confidence: 0.0
+      summary: "Unable to generate summary",
+      intent: "unknown",
+      confidence: 0.0,
     };
   }
 }
+
 
 function maskSensitiveData(text) {
   // Mask phone numbers

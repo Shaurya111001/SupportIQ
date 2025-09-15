@@ -114,85 +114,92 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: 'transparent', // ✅ show gradient
   },
   keyboardView: {
     flex: 1,
   },
   content: {
     flex: 1,
-    padding: 20,
+    padding: 24,
     justifyContent: 'center',
   },
   header: {
     alignItems: 'center',
-    marginBottom: 40,
+    marginBottom: 48,
   },
   logo: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: '#EBF4FF',
+    width: 84,
+    height: 84,
+    borderRadius: 42,
+    backgroundColor: '#FFF1E0', // ✅ peach accent
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 16,
+    marginBottom: 20,
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: '800',
     color: '#111827',
     marginBottom: 8,
+    letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 16,
     color: '#6B7280',
     textAlign: 'center',
+    lineHeight: 22,
   },
   form: {
-    gap: 16,
+    gap: 20,
   },
   inputContainer: {
     gap: 6,
   },
   inputLabel: {
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '600',
     color: '#374151',
   },
   input: {
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#D1D5DB',
-    borderRadius: 8,
-    padding: 12,
+    borderColor: '#E5E7EB',
+    borderRadius: 12, // ✅ softer rounded input
+    padding: 14,
     fontSize: 16,
     color: '#111827',
   },
   button: {
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#FF7A45', // ✅ Alan orange
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 12,
     alignItems: 'center',
-    marginTop: 8,
+    marginTop: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 4,
+    elevation: 2,
   },
   buttonDisabled: {
-    backgroundColor: '#9CA3AF',
+    backgroundColor: '#FBC19D', // ✅ lighter orange for disabled
   },
   buttonText: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   linkContainer: {
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: 20,
   },
   linkText: {
     fontSize: 14,
     color: '#6B7280',
   },
   link: {
-    color: '#3B82F6',
-    fontWeight: '500',
+    color: '#FF7A45', // ✅ warm accent
+    fontWeight: '600',
   },
 });

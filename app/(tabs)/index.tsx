@@ -9,7 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { router } from 'expo-router';
-import { MessageSquare, Clock, Tag } from 'lucide-react-native';
+import { MessageSquare, Tag } from 'lucide-react-native';
 import { useAuth } from '@/context/AuthContext';
 import { apiService } from '@/services/api';
 
@@ -48,8 +48,15 @@ export default function InboxScreen() {
     setRefreshing(false);
   };
 
+  // 🔄 Poll every 15s
   useEffect(() => {
-    fetchConversations();
+    fetchConversations(); // initial load
+
+    const interval = setInterval(() => {
+      fetchConversations();
+    }, 15000); // poll every 15 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
   }, []);
 
   const renderConversation = ({ item }: { item: Conversation }) => (
@@ -138,45 +145,41 @@ export default function InboxScreen() {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: 'transparent', // ✅ gradient comes through
   },
   header: {
-    padding: 20,
+    padding: 24,
     paddingTop: 60,
-    backgroundColor: '#FFFFFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
+    backgroundColor: 'transparent', // ✅ no block at top
   },
   headerTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 30,
+    fontWeight: '800',
+    fontFamily: 'FilsonProRegular',
     color: '#111827',
+    letterSpacing: -0.5,
   },
   headerSubtitle: {
     fontSize: 14,
     color: '#6B7280',
-    marginTop: 4,
+    marginTop: 6,
   },
   listContainer: {
-    padding: 16,
+    padding: 20,
+    gap: 16, // modern spacing between cards
   },
   conversationItem: {
-    backgroundColor: '#FFFFFF',
-    padding: 16,
-    marginBottom: 12,
-    borderRadius: 12,
+    backgroundColor: '#FFFFFF', // ✅ card floats over gradient
+    padding: 20,
+    borderRadius: 16,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   conversationHeader: {
     flexDirection: 'row',
@@ -186,26 +189,27 @@ const styles = StyleSheet.create({
   contactInfo: {
     flexDirection: 'row',
     flex: 1,
+    alignItems: 'center',
   },
   avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#EBF4FF',
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#EEF2FF', // soft Alan blue tone
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
+    marginRight: 14,
   },
   contactDetails: {
     flex: 1,
   },
   contactName: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '700',
     color: '#111827',
   },
   contactPhone: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#6B7280',
     marginTop: 2,
   },
@@ -214,14 +218,14 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     fontSize: 12,
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   unreadBadge: {
     backgroundColor: '#EF4444',
-    borderRadius: 10,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    marginTop: 4,
+    borderRadius: 999,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    marginTop: 6,
     minWidth: 20,
     alignItems: 'center',
   },
@@ -234,32 +238,35 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#4B5563',
     lineHeight: 20,
-    marginBottom: 8,
+    marginTop: 4,
+    marginBottom: 10,
   },
   aiInsights: {
     borderTopWidth: 1,
     borderTopColor: '#F3F4F6',
-    paddingTop: 8,
+    paddingTop: 10,
+    gap: 6,
   },
   aiSummary: {
-    fontSize: 12,
-    color: '#6366F1',
-    marginBottom: 4,
+    fontSize: 13,
+    color: '#4338CA', // indigo for AI feel
+    fontStyle: 'italic',
   },
   intentTag: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#ECFDF5',
-    paddingHorizontal: 8,
+    paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 12,
+    borderRadius: 999,
     alignSelf: 'flex-start',
   },
   intentText: {
-    fontSize: 11,
-    color: '#10B981',
-    fontWeight: '500',
-    marginLeft: 4,
+    fontSize: 12,
+    color: '#059669',
+    fontWeight: '600',
+    marginLeft: 6,
+    textTransform: 'capitalize',
   },
   centered: {
     flex: 1,
